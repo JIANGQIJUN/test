@@ -4,7 +4,7 @@ module test(
     );
     reg clk;
     reg rst;
-    reg [2:0]tdl=2;
+    reg [2:0]tdl=0;
     reg en;
     reg signed[10:0]x;
     wire signed[15:0]y1;
@@ -12,8 +12,7 @@ module test(
     reg [10:0]data_sin[140000:0];
     reg [20:0]cnt;
     reg [15:0]v0=16'b01111000010000000;//终端相对速度，9整7小
-    reg [12:0]f0=13'b1010000000000;//载频，3整10小，单位GHz
-    reg [5:0]path=24;
+    reg [12:0]f0=13'b0110000000000;//载频，3整10小，单位GHz
      integer file_out,file_out1;
     initial begin
     // $readmemb("C:/Users/jiang22/Desktop/fil2.txt",data_sin,0,140000); ///改动点数据矩阵长度  注意是"/"  而不是"\"
@@ -36,5 +35,5 @@ module test(
     x<=data_sin[cnt];
     end
     end
-    uk test(clk,v0,f0,en,rst,tdl,path,l,y1,y2);
+    top test(clk,en,rst,tdl,v0,f0,y1,y2);
 endmodule 

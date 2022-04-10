@@ -12,8 +12,8 @@ input rst,//复位信号，低电平有效
 input [2:0]tdl,//信道种类选择
 input [5:0]path,//径道数量
 output [3:0]l,//内插指数
-output signed[15:0]u1_0,//output signed[15:0]u1_1,output signed[15:0]u1_2,output signed[15:0]u1_3,output signed[15:0]u1_4,output signed[15:0]u1_5,output signed[15:0]u1_6,output signed[15:0]u1_7,output signed[15:0]u1_8,output signed[15:0]u1_9,output signed[15:0]u1_10,output signed[15:0]u1_11,output signed[15:0]u1_12,output signed[15:0]u1_13,output signed[15:0]u1_14,output signed[15:0]u1_15,output signed[15:0]u1_16,output signed[15:0]u1_17,output signed[15:0]u1_18,output signed[15:0]u1_19,output signed[15:0]u1_20,output signed[15:0]u1_21,output signed[15:0]u1_22,output signed[15:0]u1_23,
-output signed[15:0]u2_0//output signed[15:0]u2_1,output signed[15:0]u2_2,output signed[15:0]u2_3,output signed[15:0]u2_4,output signed[15:0]u2_5,output signed[15:0]u2_6,output signed[15:0]u2_7,output signed[15:0]u2_8,output signed[15:0]u2_9,output signed[15:0]u2_10,output signed[15:0]u2_11,output signed[15:0]u2_12,output signed[15:0]u2_13,output signed[15:0]u2_14,output signed[15:0]u2_15,output signed[15:0]u2_16,output signed[15:0]u2_17,output signed[15:0]u2_18,output signed[15:0]u2_19,output signed[15:0]u2_20,output signed[15:0]u2_21,output signed[15:0]u2_22,output signed[15:0]u2_23
+output signed[15:0]u1_0,output signed[15:0]u1_1,output signed[15:0]u1_2,output signed[15:0]u1_3,output signed[15:0]u1_4,output signed[15:0]u1_5,output signed[15:0]u1_6,output signed[15:0]u1_7,output signed[15:0]u1_8,output signed[15:0]u1_9,output signed[15:0]u1_10,output signed[15:0]u1_11,output signed[15:0]u1_12,output signed[15:0]u1_13,output signed[15:0]u1_14,output signed[15:0]u1_15,output signed[15:0]u1_16,output signed[15:0]u1_17,output signed[15:0]u1_18,output signed[15:0]u1_19,output signed[15:0]u1_20,output signed[15:0]u1_21,output signed[15:0]u1_22,output signed[15:0]u1_23,
+output signed[15:0]u2_0,output signed[15:0]u2_1,output signed[15:0]u2_2,output signed[15:0]u2_3,output signed[15:0]u2_4,output signed[15:0]u2_5,output signed[15:0]u2_6,output signed[15:0]u2_7,output signed[15:0]u2_8,output signed[15:0]u2_9,output signed[15:0]u2_10,output signed[15:0]u2_11,output signed[15:0]u2_12,output signed[15:0]u2_13,output signed[15:0]u2_14,output signed[15:0]u2_15,output signed[15:0]u2_16,output signed[15:0]u2_17,output signed[15:0]u2_18,output signed[15:0]u2_19,output signed[15:0]u2_20,output signed[15:0]u2_21,output signed[15:0]u2_22,output signed[15:0]u2_23
     );
 
 wire [3:0]index;//内插指数
@@ -2613,5 +2613,5 @@ root r2_20(clk,en&(path>=21),~rst,sum2[20],u2_20);
 root r2_21(clk,en&(path>=22),~rst,sum2[21],u2_21);
 root r2_22(clk,en&(path>=23),~rst,sum2[22],u2_22);
 root r2_23(clk,en&(path>=24),~rst,sum2[23],u2_23);
-//clock fc(clk,en,!rst,en_index,index,clkd);//分频器
+clock fc(clk,en,!rst,en_index,index,clkd);//分频器
 endmodule
