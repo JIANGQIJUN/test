@@ -11,7 +11,7 @@ output clko//fc
 reg clkc;
 reg [DIV_COUNT-1:0]div;//分频
 wire [DIV_COUNT-1:0]cnt;//分频
-assign cnt=1<<(2*l);//分频数
+assign cnt=1<<(2*(l-1));//分频数
 always@(posedge clk&en)begin//fc分频
 if(rst)begin
 clkc<=0;

@@ -11,7 +11,7 @@ module test(
     wire signed[15:0]y2;
     reg [10:0]data_sin[140000:0];
     reg [20:0]cnt;
-    reg [15:0]v0=16'b01111000010000000;//终端相对速度，9整7小
+    reg [15:0]v0=16'b101100001_0000000;//终端相对速度，9整7小
     reg [12:0]f0=13'b0110000000000;//载频，3整10小，单位GHz
      integer file_out,file_out1;
     initial begin
