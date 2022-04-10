@@ -2,7 +2,7 @@
 module test(
 
     );
-    reg clk;
+    reg clk,clkc;
     reg rst;
     reg [2:0]tdl=0;
     reg en;
@@ -23,6 +23,7 @@ module test(
          file_out2 = $fopen("D:/Users/tp2/res3.txt","w+"); //内插前1
          file_out3 = $fopen("D:/Users/tp2/res4.txt","w+"); //内插前2
     clk=1;
+    clkc=1;
     en=1;
     rst=0;
     cnt=0;
@@ -30,17 +31,28 @@ module test(
 
     end
     always #10 clk=~clk;
-    always@(posedge clk)begin
-    if(rst)begin
-    cnt<=cnt+1;
-     $fwrite(file_out, "%b\n",y1);
-      $fwrite(file_out1, "%b\n",y2);
-      $fwrite(file_out2, "%b\n",y3);
-      $fwrite(file_out3, "%b\n",y4);
-    //if(cnt==140000)
-   //$finish;
-    x<=data_sin[cnt];
+    always #10240 clkc=~clkc;
+    
+    always@(posedge clkc)begin
+        if(rst)begin
+        //cnt<=cnt+1;
+          $fwrite(file_out2, "%b\n",y3);
+          $fwrite(file_out3, "%b\n",y4);
+        //if(cnt==140000)
+       //$finish;
+        x<=data_sin[cnt];
+        end
     end
+    
+    always@(posedge clk)begin
+        if(rst)begin
+        //cnt<=cnt+1;
+         $fwrite(file_out, "%b\n",y1);
+          $fwrite(file_out1, "%b\n",y2);
+        //if(cnt==140000)
+       //$finish;
+        x<=data_sin[cnt];
+        end
     end
     top test(clk,en,rst,tdl,v0,f0,y1,y2,y3,y4);
 endmodule 
