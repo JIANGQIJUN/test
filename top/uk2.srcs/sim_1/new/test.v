@@ -6,6 +6,7 @@ module test(
     reg rst;
     reg [2:0]tdl=0;
     reg en;
+    reg [9:0]count;
     reg signed[10:0]x;
     wire signed[15:0]y1;
     wire signed[15:0]y2;
@@ -18,40 +19,33 @@ module test(
      integer file_out,file_out1,file_out2,file_out3;
     initial begin
     // $readmemb("C:/Users/jiang22/Desktop/fil2.txt",data_sin,0,140000); ///改动点数据矩阵长度  注意是"/"  而不是"\"
-     file_out = $fopen("D:/Users/tp2/res1.txt","w+");//内插后1
+         file_out = $fopen("D:/Users/tp2/res1.txt","w+");//内插后1
          file_out1 = $fopen("D:/Users/tp2/res2.txt","w+");//内插后2
-         file_out2 = $fopen("D:/Users/tp2/res3.txt","w+"); //内插前1
-         file_out3 = $fopen("D:/Users/tp2/res4.txt","w+"); //内插前2
+         file_out2 = $fopen("D:/Users/tp2/re3.txt","w+"); //内插前1
+         file_out3 = $fopen("D:/Users/tp2/re4.txt","w+"); //内插前2
     clk=1;
     clkc=1;
     en=1;
     rst=0;
     cnt=0;
+    count=0;
     #300 rst=1;
 
     end
     always #10 clk=~clk;
     always #10240 clkc=~clkc;
     
-    always@(posedge clkc)begin
-        if(rst)begin
-        //cnt<=cnt+1;
-          $fwrite(file_out2, "%b\n",y3);
-          $fwrite(file_out3, "%b\n",y4);
-        //if(cnt==140000)
-       //$finish;
-        x<=data_sin[cnt];
-        end
-    end
+
     
     always@(posedge clk)begin
         if(rst)begin
-        //cnt<=cnt+1;
+        count <= count+1;//
          $fwrite(file_out, "%b\n",y1);
           $fwrite(file_out1, "%b\n",y2);
-        //if(cnt==140000)
-       //$finish;
-        x<=data_sin[cnt];
+        if(count == 0)begin
+         $fwrite(file_out2, "%b\n",y3);
+           $fwrite(file_out3, "%b\n",y4);
+        end
         end
     end
     top test(clk,en,rst,tdl,v0,f0,y1,y2,y3,y4);
