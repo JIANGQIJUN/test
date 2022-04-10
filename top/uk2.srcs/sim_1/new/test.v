@@ -16,13 +16,14 @@ module test(
      integer file_out,file_out1;
     initial begin
     // $readmemb("C:/Users/jiang22/Desktop/fil2.txt",data_sin,0,140000); ///改动点数据矩阵长度  注意是"/"  而不是"\"
-     file_out = $fopen("C:/Users/jiang22/Desktop/fil1.txt","w+");
-         file_out1 = $fopen("C:/Users/jiang22/Desktop/fil3.txt","w+");
+     file_out = $fopen("D:/Users/tp2/res1.txt","w+");
+         file_out1 = $fopen("D:/Users/tp2/res2.txt","w+");
     clk=1;
     en=1;
     rst=0;
     cnt=0;
     #300 rst=1;
+
     end
     always #10 clk=~clk;
     always@(posedge clk)begin
